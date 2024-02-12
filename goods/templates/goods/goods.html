@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <a href="{% url 'get_categories'%}">
+            <button>Categories</button>
+        </a>
+        <a href="{% url 'create_good'%}">
+            <button>Create Good Item</button>
+        </a>
+        <h1>View All Goods</h1>
+        {% for good in goods %}
+            <h2>{{good.name}}</h2>
+            <h3>{{good.price}}</h3>
+            <p>{{good.description}}</p>
+            <img src="{{good.preview.url}}" alt="">
+            <a href="{% url 'get_good' pk=good.pk %}">
+                <button>View Details</button>
+            </a>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <a href="{% url 'get_goods'%}">
+            <button>Home Page</button>
+        </a>
+        <h1>View Good Item</h1>
+        <h2>{{good.name}}</h2>
+        <h3>{{good.price}}</h3>
+        <p>{{good.description}}</p>
+        <p>{{good.category}}</p>
+        <p>{{good.cretor}}</p>
+        <img src="{{good.image.url}}" alt="">
+        <a href="{% url 'update_good' pk=good.pk %}">
+            <button>Edit</button>
+        </a>
+        <a href="{% url 'delete_good' pk=good.pk %}">
+            <button>Delete</button>
+        </a>
+    </body>
+</html>

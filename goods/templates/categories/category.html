@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <a href="{% url 'get_goods'%}">
+            <button>Home Page</button>
+        </a>
+        <a href="{% url 'get_categories'%}">
+            <button>Categories</button>
+        </a>
+        <h1>View Category</h1>
+        <h2>{{category.name}}</h2>
+        <a href="{% url 'update_category' pk=category.pk %}">
+            <button>Edit</button>
+        </a>
+        <a href="{% url 'delete_category' pk=category.pk %}">
+            <button>Delete</button>
+        </a>
+    </body>
+</html>

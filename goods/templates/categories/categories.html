@@ -1,0 +1,18 @@
+
+<html>
+    <body>
+        <a href="{% url 'get_goods'%}">
+            <button>Home Page</button>
+        </a>
+        <a href="{% url 'create_category'%}">
+            <button>Create Category</button>
+        </a>
+        <h1>View All Categories</h1>
+        {% for category in categories %}
+            <h2>{{category.name}}</h2>
+            <a href="{% url 'get_category' pk=category.pk %}">
+                <button>View Details</button>
+            </a>
+        {% endfor %}
+    </body>
+</html>

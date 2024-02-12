@@ -1,0 +1,16 @@
+<html>
+<body>
+    <a href="{% url 'get_goods'%}">
+        <button>Home Page</button>
+    </a>
+    <a href="{% url 'get_categories'%}">
+        <button>Categories</button>
+    </a>
+    <h1>Update Category </h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
