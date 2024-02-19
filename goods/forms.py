@@ -20,3 +20,6 @@ class GoodForm(forms.ModelForm):
             if image.size > self.MAX_IMAGE_SIZE:
                 raise ValidationError("The maximum file size is 10MB")
         return image
+    
+class SearchForm(forms.Form):
+    search_query = forms.CharField(label='', max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Enter name ...'}))

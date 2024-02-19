@@ -11,6 +11,8 @@ from PIL import Image as PilImage
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=32)
+#    creator = models.ForeignKey(User, on_delete=models.PROTECT, default=User.objects.get(username='admin'))
+
 
     def __str__(self):
         return self.name
@@ -23,7 +25,7 @@ class Good(models.Model):
     image = models.ImageField(upload_to='goods/images/' )
     preview = models.ImageField(upload_to='goods/previews/')
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
-    creator = models.ForeignKey(User, on_delete=models.PROTECT)
+    creator = models.ForeignKey(User, on_delete=models.PROTECT, default=User.objects.get(username='admin'))
 
     # Save method to handle image resizing and preview creation
     def save(self, **kwargs):

@@ -9,6 +9,7 @@ pillow = "*"
 django-tailwindcss = "*"
 django-webpack-loader = "*"
 django-tailwind = "*"
+django-browser-reload = "*"
 
 [dev-packages]
 

@@ -34,5 +34,13 @@ if settings.DEBUG:
                 "document_root": settings.MEDIA_ROOT,
             },
         ),
+        re_path(
+            r"^static/(?P<path>.*)$",
+            serve,
+            {
+                "document_root": settings.STATIC_ROOT,
+            },
+        ),
+        re_path("__reload__/", include("django_browser_reload.urls")),
     ]
 

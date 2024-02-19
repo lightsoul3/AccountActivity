@@ -1,18 +1,17 @@
-<html>
-    <body>
-        <a href="{% url 'get_goods'%}">
-            <button>Home Page</button>
-        </a>
-        <a href="{% url 'get_categories'%}">
-            <button>Categories</button>
-        </a>
-        <h1>View Category</h1>
-        <h2>{{category.name}}</h2>
-        <a href="{% url 'update_category' pk=category.pk %}">
-            <button>Edit</button>
-        </a>
-        <a href="{% url 'delete_category' pk=category.pk %}">
-            <button>Delete</button>
-        </a>
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="flex font-serif flex-row bg-black text-2xl p-6">
+    <a href="{% url 'get_goods' %}" class="p-2 text-white hover:text-slate-200"><button>Home Page</button></a>
+    <a href="{% url 'get_categories' %}" class="p-2 text-white hover:text-slate-200"><button>Categories</button></a>
+    <a href="{% url 'create_category' %}" class="p-2 text-white hover:text-slate-200"><button>Create Category</button></a>
+  </div>
+  <h1 class="font-serif mt-14 text-center font-bold text-4xl">View Category</h1>
+  <div class="pt-14 pl-14 pr-14 flex flex-col items-start">
+    <h2 class="text-xl truncate font-serif font-bold">{{ category.name }}</h2>
+    <div class="mt-8">
+      <a href="{% url 'update_category' category.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100"><button>Edit</button></a>
+      <a href="{% url 'delete_category' category.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100 ml-2"><button>Delete</button></a>
+    </div>
+  </div>
+{% endblock %}

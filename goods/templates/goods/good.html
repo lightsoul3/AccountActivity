@@ -1,20 +1,38 @@
-<html>
-    <body>
-        <a href="{% url 'get_goods'%}">
-            <button>Home Page</button>
-        </a>
-        <h1>View Good Item</h1>
-        <h2>{{good.name}}</h2>
-        <h3>{{good.price}}</h3>
-        <p>{{good.description}}</p>
-        <p>{{good.category}}</p>
-        <p>{{good.cretor}}</p>
-        <img src="{{good.image.url}}" alt="">
-        <a href="{% url 'update_good' pk=good.pk %}">
-            <button>Edit</button>
-        </a>
-        <a href="{% url 'delete_good' pk=good.pk %}">
-            <button>Delete</button>
-        </a>
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block body %}
+  <Helmet>
+    <title>{{ good.name }}</title>
+  </Helmet>
+  <div class="flex font-serif flex-row bg-black text-2xl p-6">
+    <a href="{% url 'get_goods' %}" class="p-2 text-white hover:text-slate-200"><button>Home Page</button></a>
+    <a href="{% url 'get_categories' %}" class="p-2 text-white hover:text-slate-200"><button>Categories</button></a>
+    <a href="{% url 'create_good' %}" class="p-2 text-white hover:text-slate-200"><button>Create Good Item</button></a>
+  </div>
+  <h1 class="font-serif mt-14 text-center font-bold text-4xl">View {{ good.name }}</h1>
+  <div class="pt-14 pl-14 pr-14 flex items-start">
+    <img src="{{ good.image.url }}" alt="" class="float-left mr-4 mb-4 max-w-[500px] max-h-[500px] object-contain" />
+    <div class="flex flex-col">
+      <div class="mb-4">
+        <h2 class="text-2xl font-serif font-bold">Name:</h2>
+        <h2 class="font-serif text-lg">{{ good.name }}</h2>
+      </div>
+      <div class="mb-4">
+        <h3 class="text-2xl font-serif font-bold">Price:</h3>
+        <h3 class="text-gray-600 font-serif text-lg">{{ good.price }}</h3>
+      </div>
+      <div class="mb-4">
+        <p class="text-2xl font-serif font-bold">Category:</p>
+        <p class="font-serif text-lg">{{ good.category }}</p>
+      </div>
+      <div class="mb-4">
+        <p class="text-2xl font-serif font-bold">Description:</p>
+        <p class="font-serif text-lg">{{ good.description }}</p>
+      </div>
+      <div class="flex justify-end">
+        <a href="{% url 'update_good' good.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100"><button>Edit</button></a>
+        <a href="{% url 'delete_good' good.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100 ml-2"><button>Delete</button></a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,18 +1,29 @@
+{% extends 'base.html' %}
 
-<html>
-    <body>
-        <a href="{% url 'get_goods'%}">
-            <button>Home Page</button>
-        </a>
-        <a href="{% url 'create_category'%}">
-            <button>Create Category</button>
-        </a>
-        <h1>View All Categories</h1>
-        {% for category in categories %}
-            <h2>{{category.name}}</h2>
-            <a href="{% url 'get_category' pk=category.pk %}">
-                <button>View Details</button>
-            </a>
-        {% endfor %}
-    </body>
-</html>
+{% block body %}
+  <div class="flex font-serif flex-row bg-black text-2xl p-6 justify-between">
+    <div>
+      <a href="{% url 'get_goods' %}" class="p-2 text-white hover:text-slate-200"><button>Home Page</button></a>
+      <a href="{% url 'create_category' %}" class="p-2 text-white hover:text-slate-200"><button>Create Category</button></a>
+    </div>
+    {% include 'categories/search.html' %}
+  </div>
+  <h1 class="font-serif mt-14 text-center font-bold text-4xl">Categories List</h1>
+  <div class="flex flex-col flex-wrap pt-14 pl-14 pr-14 mb-6">
+    {% for category in categories %}
+      <div class="flex flex-row p-5 border-b-[1px] border-gray-400 relative overflow-hidden m-1 justify-between items-center">
+        <h2 class="text-xl truncate font-serif ml-5 font-bold">{{ category.name }}</h2>
+        <a href="{% url 'get_category' category.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100"><button>View Details</button></a>
+      </div>
+      {% empty %}
+      <div class="text-center">
+        <p class="font-serif text-xl mb-7">No results found.</p>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="text-center">
+    {% if form.is_bound %}
+      <a href="{% url 'get_categories' %}" class="bottom-4 border-2 p-2 text-xl bg-white font-bold font-serif hover:bg-slate-100"><button>Back</button></a>
+    {% endif %}
+  </div>
+  {% endblock %}
