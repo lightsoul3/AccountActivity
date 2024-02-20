@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Category, Good
 
-# Register your models here.
+# Registered my mmodels in admin
 admin.site.register(Category)
 admin.site.register(Good)

@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block body %}
-  <div class="flex font-serif flex-row bg-black text-2xl p-6 justify-between">
+  <div class="flex font-serif flex-row bg-black text-2xl p-6 justify-between w-[100%]">
     <div class="flex items-center">
       <a href="{% url 'get_categories' %}" class="p-2 text-white hover:text-slate-200"><button>Categories</button></a>
       <a href="{% url 'create_good' %}" class="p-2 text-white hover:text-slate-200"><button>Create Good Item</button></a>
+      <a href="{% url 'logout_user' %}" class="p-2 text-white hover:text-slate-200">Log out</a>
     </div>
     {% include 'goods/search.html' %}
   </div>

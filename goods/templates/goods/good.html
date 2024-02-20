@@ -29,10 +29,14 @@
         <p class="text-2xl font-serif font-bold">Description:</p>
         <p class="font-serif text-lg">{{ good.description }}</p>
       </div>
-      <div class="flex justify-end">
-        <a href="{% url 'update_good' good.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100"><button>Edit</button></a>
-        <a href="{% url 'delete_good' good.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100 ml-2"><button>Delete</button></a>
-      </div>
+      {% if user.is_authenticated %}
+        {% if user == good.creator %}
+          <div class="flex justify-end">
+            <a href="{% url 'update_good' good.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100"><button>Edit</button></a>
+            <a href="{% url 'delete_good' good.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100 ml-2"><button>Delete</button></a>
+          </div>
+        {% endif %}
+      {% endif %}
     </div>
   </div>
 {% endblock %}

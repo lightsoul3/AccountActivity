@@ -30,6 +30,11 @@
       <label for="id_image" class="font-bold">Image:</label>
       <br />
       {{ form.image }}
+      <ul>
+        {% if form.image.errors %}
+          <li class="mt-4 text-red-600">{{ form.image.errors }}</li>
+        {% endif %}
+      </ul>
     </div>
     <div class="mb-7">
       <label for="id_category" class="font-bold">Category:</label>
