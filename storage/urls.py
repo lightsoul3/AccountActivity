@@ -22,11 +22,12 @@ from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('goods/', include('goods.urls')),
+    path('goods/', include('goods.urls')), # url to good app
 ]
 
 if settings.DEBUG:
     urlpatterns += [
+        # url pattern for serving media files.
         re_path(
             r"^media/(?P<path>.*)$",
             serve,
@@ -34,6 +35,7 @@ if settings.DEBUG:
                 "document_root": settings.MEDIA_ROOT,
             },
         ),
+        # url pattern for serving static files.
         re_path(
             r"^static/(?P<path>.*)$",
             serve,
@@ -41,6 +43,7 @@ if settings.DEBUG:
                 "document_root": settings.STATIC_ROOT,
             },
         ),
+        # url pattern for enabling automatic browser reloading during development.
         re_path("__reload__/", include("django_browser_reload.urls")),
     ]
 

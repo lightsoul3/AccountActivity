@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # added some installation
     'tailwind',
     'theme',
     'django_browser_reload',
 
+    # added app "goods"
     'goods',
 ]
 
@@ -134,13 +136,16 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#added configuration settings for media files
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = 'media/'
 
+#added configuration settings for tailwindcss
 TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+#added ulr for ogout
 LOGOUT_REDIRECT_URL = "login_user"
 

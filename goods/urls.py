@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import login_user, logout, get_goods, get_good, update_good, delete_good, create_good, get_categories, get_category, update_category, delete_category, create_category, register_user
+from storage import settings
+from .views import login_user, get_goods, get_good, update_good, delete_good, create_good, get_categories, get_category, update_category, delete_category, create_category, register_user
+from django.contrib.auth.views import LogoutView
 
 #added all urls of my views
 urlpatterns = [
@@ -17,5 +19,5 @@ urlpatterns = [
 
     path('register/', register_user, name='register'),
     path('login/', login_user, name='login_user'),
-    path('logout/', logout, name='logout_user'),
+    path('logout/', LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL), name='logout_user'), #URL pattern for user logout, using LogoutView to handle logout and redirecting to LOGOUT_REDIRECT_URL.
 ]

@@ -2,9 +2,13 @@
 
 {% block body %}
   <div class="flex font-serif flex-row bg-black text-2xl p-6 justify-between">
-    <div>
+    <div class="flex flex-row">
       <a href="{% url 'get_goods' %}" class="p-2 text-white hover:text-slate-200"><button>Home Page</button></a>
       <a href="{% url 'create_category' %}" class="p-2 text-white hover:text-slate-200"><button>Create Category</button></a>
+      <form action="{% url 'logout_user' %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="p-2 text-white hover:text-slate-200" style="border: none; background: none; cursor: pointer;">Log out</button>
+      </form>
     </div>
     {% include 'categories/search.html' %}
   </div>
