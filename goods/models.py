@@ -6,14 +6,11 @@ from django.contrib.auth.models import User
 from io import BytesIO
 from PIL import Image as PilImage
 
-#created method to get default user
-def get_default_creator():
-    return User.objects.get(username='creator').id
 
 #created model of category
 class Category(models.Model):
     name = models.CharField(max_length=32)
-    creator = models.ForeignKey(User, on_delete=models.PROTECT, default=get_default_creator)
+    creator = models.ForeignKey(User, on_delete=models.PROTECT)
 
 
     def __str__(self):
@@ -27,7 +24,7 @@ class Good(models.Model):
     image = models.ImageField(upload_to='goods/images/' )
     preview = models.ImageField(upload_to='goods/previews/')
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
-    creator = models.ForeignKey(User, on_delete=models.PROTECT, default=get_default_creator)
+    creator = models.ForeignKey(User, on_delete=models.PROTECT)
 
     # Save method to handle image resizing and preview creation
     def save(self, **kwargs):

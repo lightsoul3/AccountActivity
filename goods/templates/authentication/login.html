@@ -1,15 +1,23 @@
+{% extends 'base.html' %}
 
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-</body>
-</html>
+{% block body %}
+  <h2 class="font-serif mt-14 text-center font-bold text-4xl">Login</h2>
+  <form method="post" class="font-serif text-xl m-14 text-center">
+    {% csrf_token %}
+    <div class="mb-7">
+        <label for="id_uername" class="font-bold">Username:</label>
+        <br />
+        {{ form.username }}
+      </div>
+      <div class="mb-7">
+        <label for="id_password" class="font-bold">Password:</label>
+        <br />
+        {{ form.password }}
+    </div>
+    <button type="submit" class="bottom-4 border-2 p-2 text-xl bg-white font-bold font-serif hover:bg-slate-100">Login</button>
+  </form>
+  <div class="font-serif text-xl m-14 text-center ">
+    <p class="font-bold p-5">Don`t have account?</p>
+    <a href="{% url 'register' %}" class="bottom-4 border-2 p-2 text-xl bg-white font-bold font-serif hover:bg-slate-100"><button>Sign Up</button></a>
+  </div>
+{% endblock %}

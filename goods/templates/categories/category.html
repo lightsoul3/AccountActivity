@@ -14,7 +14,7 @@
   <div class="pt-14 pl-14 pr-14 flex flex-col items-start">
     <h2 class="text-xl truncate font-serif font-bold">{{ category.name }}</h2>
     {% if user.is_authenticated %}
-      {% if user == good.creator %}
+      {% if user == category.creator %}
         <div class="mt-8">
           <a href="{% url 'update_category' category.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100"><button>Edit</button></a>
           <a href="{% url 'delete_category' category.pk %}" class="border-2 p-2 bg-white font-bold font-serif text-lg hover:bg-slate-100 ml-2"><button>Delete</button></a>

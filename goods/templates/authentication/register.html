@@ -1,14 +1,49 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-</head>
-<body>
-    <h2>Register</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Register</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block body %}
+  <h2 class="font-serif mt-14 text-center font-bold text-4xl">Sign Up</h2>
+  <form method="post" class="font-serif text-xl m-14 text-center">
+    {% csrf_token %}
+    <div class="mb-7">
+      <label for="id_username" class="font-bold">Username:</label>
+      <br />
+      {{ form.username }}
+      <br />
+      {% if form.username.errors %}
+        <p class="mt-4 text-red-600">{{ form.username.help_text }}</p>
+      {% endif %}
+    </div>
+    <div class="mb-7">
+      <label for="id_email" class="font-bold">Email:</label>
+      <br />
+      {{ form.email }}
+      <br />
+      {% if form.email.errors %}
+        <p class="mt-4 text-red-600">{{ form.email.help_text }}</p>
+      {% endif %}
+    </div>
+    <div class="mb-7">
+      <label for="id_password1" class="font-bold">Password:</label>
+      <br />
+      {{ form.password1 }}
+      <br />
+      {% if form.password1.errors %}
+        <p class="mt-4 text-red-600">{{ form.password1.help_text }}</p>
+      {% endif %}
+    </div>
+    <div class="mb-7">
+      <label for="id_password2" class="font-bold">Confirm Password:</label>
+      <br />
+      {{ form.password2 }}
+      <br />
+      {% if form.password2.errors %}
+        <p class="mt-4 text-red-600">{{ form.password2.help_text }}</p>
+      {% endif %}
+    </div>
+
+    <button type="submit" class="bottom-4 border-2 p-2 text-xl bg-white font-bold font-serif hover:bg-slate-100">Sign Up</button>
+  </form>i<div class="font-serif text-xl m-14 text-center">
+    <p class="font-bold p-5">Already have account?</p>
+    <a href="{% url 'login_user' %}" class="bottom-4 border-2 p-2 text-xl bg-white font-bold font-serif hover:bg-slate-100"><button>Login</button></a>
+  </div>
+{% endblock %}
